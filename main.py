@@ -35,10 +35,10 @@ async def on_message(message):
         if len(unkown_args) > 0:
             await sendMessage(message, "Invalid argument(s): {}".format(unkown_args), True, "Command error")
             return
-    if not known_args.name:
-        await search_by_nicknames(message, known_args)
-    else:
-        await search_by_name(message, known_args)
+        if not known_args.name:
+            await search_by_nicknames(message, known_args)
+        else:
+            await search_by_name(message, known_args)
 
 async def search_by_nicknames(message, known_args):
     nicknames = get_all_nicknames()
